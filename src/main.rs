@@ -53,7 +53,7 @@ fn main() {
                 " ".repeat(depth)
             )),
             "," => {
-                bf_program.push_str(&format!("{}mem[p] = std::io::stdin().bytes().next().and_then(|result| result.ok()).map(|byte| byte as u8).unwrap();\n", " ".repeat(depth)));
+                bf_program.push_str(&format!("{}memory[pointer] = std::io::stdin().bytes().next().and_then(|result| result.ok()).map(|byte| byte as u8).unwrap();\n", " ".repeat(depth)));
                 use_read = true;
             }
             "[" => {
