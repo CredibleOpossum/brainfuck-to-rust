@@ -7,14 +7,14 @@ fn compress_bf(character: String, previous_length: i32, depth: usize) -> String 
         "<" => return format!("{}pointer -= {};\n", " ".repeat(depth), previous_length),
         "+" => {
             return format!(
-                "{}memory[pointer] = ((memory[pointer] as i16 + {}) % 256) as u8;\n",
+                "{}memory[pointer] = memory[pointer].wrapping_add({});\n",
                 " ".repeat(depth),
                 previous_length
             )
         }
         "-" => {
             return format!(
-                "{}memory[pointer] = ((memory[pointer] as i16 - {}) % 256) as u8;\n",
+                "{}memory[pointer] = memory[pointer].wrapping_sub({});\n",
                 " ".repeat(depth),
                 previous_length
             )
